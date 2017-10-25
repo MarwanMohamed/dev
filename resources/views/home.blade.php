@@ -9,11 +9,15 @@
 
                 <div class="panel-body">
                     <ul>
-                        @foreach($exams as $exam)
-                            <li>
-                                <a href="{{route('start', $exam->id)}}">{{$exam->name}}</a>
-                            </li>
-                        @endforeach
+                        @if(count($exams) == 0 )
+                            <p>no exams available now</p>
+                        @else
+                            @foreach($exams as $exam)
+                                <li>
+                                    <a href="{{route('start', $exam->id)}}">{{$exam->name}}</a>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>

@@ -28,17 +28,9 @@
                         @elseif($question->type == 3)
                             @foreach($question->answers as $answer)
                                 <label for="{{$answer->answer}}">{{$answer->answer}}</label>
-                                <input id='{{$answer->answer}}' type="checkbox" name="answer" value="{{$answer->id}}"><br>
+                                <input id='{{$answer->answer}}' type="checkbox" name="answer[]" value="{{$answer->id}}"><br>
                             @endforeach
-                        @elseif($question->type == 4)
-                        <ul id="sortable">
-                            @foreach($question->answers as $answer)
-                                <label>Sort: Drag and Drop</label>
-                            <li class="ui-state-default"><i class="fa fa-sort" aria-hidden="true"></i> {{$answer->answer}}</li>
-                            @endforeach
-                           
-                        </ul>
-
+                            
                         @elseif($question->type == 5)
                             <textarea name="text" class="form-control" required></textarea><br>
                         @endif

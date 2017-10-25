@@ -19,17 +19,15 @@
 			<form role='form' method="post" action="{{route('save.answer', $id)}}">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<input type="hidden" name="question_id" value="{{ $id }}">
-				
-					<div class="form-group">
-						<label for="title"> Answer:</label>
-						<input type="text" name="answer" required class="form-control">
-					</div>
+						<div class="form-group">
+							<label for="title"> Answer:</label>
+							<input type="text" name="answer" required class="form-control">
+						</div>
 
-					<div class="form-group">
-						<label for="correct"> Correct Answer?</label>
-						<input id="correct" type="checkbox" name="is_correct" value="1">
-					</div>
-				
+						<div class="form-group">
+							<label for="correct"> Correct Answer?</label>
+							<input id="correct" type="checkbox" name="is_correct" value="1">
+						</div>
             	<button type="submit" class="btn btn-primary">Create Answer</button>
 			</form>
 		</div>

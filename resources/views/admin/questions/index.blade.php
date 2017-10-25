@@ -9,7 +9,7 @@
 				<li><i class="fa fa-home"></i><a href="{{ Url('/admin') }}">Home</a></li>
 				<li><i class="fa fa-tags"></i>Questions</li>                          
 			</ol>
-		<a class="btn btn-primary pull-right" href="{{route('questions.create', $exam->id)}}">Create Anther Question</a>
+		<a class="btn btn-primary pull-right" href="{{route('questions.create', $exam->id)}}">Create Another Question</a>
 		</div>
 	</div>
 

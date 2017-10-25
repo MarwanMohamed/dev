@@ -31,7 +31,6 @@
 							<option value="1">True-False</option>
 							<option value="2">One choice</option>
 							<option value="3">multiple choices</option>
-							<option value="4">Drag and Drop</option>
 							<option value="5">Open answer</option>
 						</select>
 					</div>

@@ -15,6 +15,9 @@ Route::middleware(['admin'])->prefix('/admin')->group(function () {
 	Route::get('/question/{id}/answer', 'AnswerController@create')->name('questions.answer');
 	Route::post('/question/{id}/answer', 'AnswerController@save')->name('save.answer');
 	Route::get('/question/{id}', 'QuestionsController@show')->name('questions');
+	Route::get('/questions', 'QuestionsController@openQuestions')->name('open.qestions');
+	Route::get('/questions/right/{id}', 'QuestionsController@right')->name('right.question');
+	Route::get('/questions/wrong/{id}', 'QuestionsController@wrong')->name('wrong.question');
 });
 
 Route::get('/', 'HomeController@index')->name('home');

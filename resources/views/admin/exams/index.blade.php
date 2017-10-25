@@ -9,7 +9,7 @@
 				<li><i class="fa fa-home"></i><a href="{{ Url('/admin') }}">Home</a></li>
 				<li><i class="fa fa-tags"></i>Exams</li>                          
 			</ol>
-		<a class="btn btn-primary pull-right" href="{{route('create.exam')}}">Create Anther Exam</a>                        
+		<a class="btn btn-primary pull-right" href="{{route('create.exam')}}">Create Another Exam</a>                        
 		</div>
 			
 	</div>
