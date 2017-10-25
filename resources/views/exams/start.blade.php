@@ -14,11 +14,8 @@
                         @php $time[] = $question->time; @endphp
                     @endforeach
                     <p>Exam Time : {{array_sum($time)}} minutes</p>
-
-                    <form method="post" action="{{route('go.exam', [$exam->id])}}">
-                        {{ csrf_field() }}
-                        <button class="btn btn-primary">Star</button>
-                    </form>
+                        @php $question = new App\Http\Controllers\HomeController; @endphp
+                        <a  href="{{Url("/exam/$exam->id/question/")}}/{{$question->usersNextQuestion($exam->id)}}" class="btn btn-primary">Star</a>
                 </div>
             </div>
         </div>

@@ -10,7 +10,8 @@
                 <input type="hidden" name="time" id="time" value="{{$question->time}}">
                 <div class="panel-body">
 
-                    <form method="post" action="{{route('next.question', $exam->id)}}" id="saveQuestion">
+                    <form method="post" action="{{route('next.question', [$exam->id,$question->id])}}" id="saveQuestion">
+
                         {{ csrf_field() }}
                         <input type="hidden" name="question_id" value="{{$question->id}}">
                         @if($question->type == 1)
@@ -39,7 +40,7 @@
                         </ul>
 
                         @elseif($question->type == 5)
-                            <textarea name="text" class="form-control"></textarea><br>
+                            <textarea name="text" class="form-control" required></textarea><br>
                         @endif
 
                         <button class="btn btn-primary pull-right">Next</button>
@@ -60,7 +61,7 @@
       } );
     </script>
 
-{{--     <script>
+    <script>
         var time = $('#time').val();
         document.getElementById('timer').innerHTML =  time + ":" + 00;
         startTimer();
@@ -87,5 +88,5 @@
       if (sec < 0) {sec = "59"};
       return sec;
     }
-    </script> --}}
+    </script>
 @endsection

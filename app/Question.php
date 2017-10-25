@@ -12,4 +12,9 @@ class Question extends Model
 	{
 		return $this->hasMany(Question_answers::class);
 	}
+	
+	public function exam()
+	{
+		return $this->belongsTo('App\Exam','exam_id');
+	}
 }

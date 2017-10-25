@@ -15,15 +15,16 @@ Route::middleware(['admin'])->prefix('/admin')->group(function () {
 	Route::get('/question/{id}/answer', 'AnswerController@create')->name('questions.answer');
 	Route::post('/question/{id}/answer', 'AnswerController@save')->name('save.answer');
 	Route::get('/question/{id}', 'QuestionsController@show')->name('questions');
-
-
 });
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/start/exam/{id}', 'HomeController@start')->name('start');
 Route::post('/exam/{id}', 'HomeController@renderExam')->name('go.exam');
-Route::post('/exam/{id}/next', 'HomeController@saveQuestion')->name('next.question');
+Route::post('/exam/{exam_id}/{question_id}/next', 'HomeController@saveQuestion')->name('next.question');
+Route::get('/exam/{exam_id}/question/{question_id}', 'HomeController@renderQuestion');
+Route::get('test/{id}','HomeController@usersNextQuestion');
+Route::get('exam/{exam}/congratulations','HomeController@congratulations')->name('exam.congratulations');
 
 Auth::routes();
 
