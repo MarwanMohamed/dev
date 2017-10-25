@@ -26,5 +26,7 @@ Route::get('/exam/{exam_id}/question/{question_id}', 'HomeController@renderQuest
 Route::get('test/{id}','HomeController@usersNextQuestion');
 Route::get('exam/{exam}/congratulations','HomeController@congratulations')->name('exam.congratulations');
 
+Route::get('/user/exam', 'HomeController@userExams')->name('user.exam');
+
 Auth::routes();
 

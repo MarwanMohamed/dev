@@ -111,7 +111,12 @@ class HomeController extends Controller
 
     public function congratulations(Exam $exam)
     {
-        
         return view('exams.congratulations',compact('exam'));
+    }
+
+    public function userExams()
+    {
+        $exams = auth()->user()->exams;
+        return view('exams.myExam', compact('exams'));
     }
 }
