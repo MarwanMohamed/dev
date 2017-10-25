@@ -22,6 +22,8 @@ Route::middleware(['admin'])->prefix('/admin')->group(function () {
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/start/exam/{id}', 'HomeController@start')->name('start');
+Route::post('/exam/{id}', 'HomeController@renderExam')->name('go.exam');
+Route::post('/exam/{id}/next', 'HomeController@saveQuestion')->name('next.question');
 
 Auth::routes();
 

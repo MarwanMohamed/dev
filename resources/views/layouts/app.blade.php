@@ -12,6 +12,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #sortable { list-style-type: none; margin: 0; padding: 10px; width: 60%;}
+        #sortable li {  background: #ccc; margin-bottom: 10px; padding: 10px;}
+    </style>
 </head>
 <body>
     <div id="app">
@@ -76,5 +81,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('script')
+
 </body>
 </html>

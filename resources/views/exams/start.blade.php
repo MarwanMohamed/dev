@@ -8,14 +8,17 @@
                 <div class="panel-heading">Exam Details</div>
 
                 <div class="panel-body">
-                    <p>Exam Question : {{count($exam->questions)}}</p>
+                    <p>Exam Questions : {{count($exam->questions)}} Questions</p>
                     @php $time = []; @endphp
                     @foreach($exam->questions as  $question)
                         @php $time[] = $question->time; @endphp
                     @endforeach
-                    <p>Exam Question : {{array_sum($time)}}</p>
+                    <p>Exam Time : {{array_sum($time)}} minutes</p>
 
-                    <a class="btn btn-primary">Star</a>
+                    <form method="post" action="{{route('go.exam', [$exam->id])}}">
+                        {{ csrf_field() }}
+                        <button class="btn btn-primary">Star</button>
+                    </form>
                 </div>
             </div>
         </div>
