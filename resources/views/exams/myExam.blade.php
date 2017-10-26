@@ -12,19 +12,19 @@
                          @if(count(auth()->user()->exams) == 0 )
                             <p>no exams finished yet</p>
                         @else
-                        @foreach(auth()->user()->exams as $exam)
-                            <li>
-                                {{$exam->name}} --- Score Result : 
+                            @foreach(auth()->user()->exams as $exam)
+                                <li>
+                                    {{$exam->name}} --- Score Result : 
 
-                                @php $score = []; @endphp
-                                @foreach($exam->questions as $question)
-                                    @foreach($question->userAnswers as $answer)
-                                        @php $score[] = $answer->score; @endphp
+                                    @php $score = []; @endphp
+                                    @foreach($exam->questions as $question)
+                                        @foreach($question->userAnswers() as $answer)
+                                            @php $score[] = $answer->score; @endphp
+                                        @endforeach 
                                     @endforeach 
-                                @endforeach 
-                                {{count($score)}}/ {{count($exam->questions)}}
-                            </li>
-                        @endforeach
+                                    {{count($score)}} / {{count($exam->questions)}}
+                                </li>
+                            @endforeach
                         @endif
                     </ul>
                 </div>

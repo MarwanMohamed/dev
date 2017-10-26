@@ -20,6 +20,6 @@ class Question extends Model
 
 	public function userAnswers()
 	{
-		return $this->hasMany(User_answers::class);
+		return $this->hasMany(User_answers::class)->where('score', 1)->get();
 	}
 }
