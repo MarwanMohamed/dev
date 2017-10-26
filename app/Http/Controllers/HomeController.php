@@ -116,6 +116,9 @@ class HomeController extends Controller
     public function renderQuestion($exam_id,$qestion_id)
     {
         $expectedQuestionId = $this->usersNextQuestion($exam_id);
+        if($expectedQuestionId == 0)
+        return view('exams.congratulations',compact('exam', 'expectedQuestionId'));
+
         if($expectedQuestionId != $qestion_id) 
             return redirect(Url("exam/$exam_id/question/$expectedQuestionId"));
         
