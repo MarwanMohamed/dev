@@ -10,4 +10,9 @@ class User_answers extends Model
     {
     	return $this->belongsTo(Question::class);
     }
+
+    public function answer()
+    {
+    	return $this->belongsTo(Question_answers::class);
+    }
 }

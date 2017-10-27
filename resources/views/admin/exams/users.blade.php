@@ -9,7 +9,6 @@
 				<li><i class="fa fa-home"></i><a href="{{ Url('/admin') }}">Home</a></li>
 				<li><i class="fa fa-tags"></i>Exams</li>                          
 			</ol>
-		<a class="btn btn-primary pull-right" href="{{route('create.exam')}}">Create Another Exam</a>                        
 		</div>
 	</div>
 
@@ -20,13 +19,13 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Exam Name</th>
+					<th>Users Name</th>
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($exams as $exam)
+				@foreach($users as $user)
 				<tr>
-					<td><a href="{{route('exam', $exam->id)}}">{{$exam->name}}</a></td>
+					<td><a href="{{route('exam.users.answers', [$exam->id, $user->id])}}">{{$user->name}}</a></td>
 				</tr>
 				@endforeach
 			</tbody>

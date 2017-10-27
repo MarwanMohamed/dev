@@ -67,31 +67,31 @@ class HomeController extends Controller
         
         if ($question->type == 3) {
             $correctAnswers = Question_answers::where('question_id', $question_id)->where('is_correct',1)->get()->pluck('id')->toArray();
-
-            if (count(array_diff($correctAnswers,$request->answer)) == 0  && count(array_diff($request->answer,$correctAnswers)) == 0) {
-                $score = 1;
-            } else {
-                $score = 0;            
-            }
-
-            $i = 1;
-
-            foreach ($request->answer as $k => $answer) {
-                $saveAnswer = new User_answers;
-                $saveAnswer->question_id = $question_id;
-                $saveAnswer->user_id = auth()->user()->id;
-                $saveAnswer->answer_id = $answer;
-                if ($score == 1) {
-                    if ($i == 1) {
-                        $saveAnswer->score = 1;
-                    } else {
-                        $saveAnswer->score = 0;
-                    }
-                    $i++;
+            if ($request->answer != null ) {
+                if (count(array_diff($correctAnswers,$request->answer)) == 0  && count(array_diff($request->answer,$correctAnswers)) == 0) {
+                    $score = 1;
+                } else {
+                    $score = 0;            
                 }
-                $saveAnswer->save();
-            }
 
+                $i = 1;
+
+                foreach ($request->answer as $k => $answer) {
+                    $saveAnswer = new User_answers;
+                    $saveAnswer->question_id = $question_id;
+                    $saveAnswer->user_id = auth()->user()->id;
+                    $saveAnswer->answer_id = $answer;
+                    if ($score == 1) {
+                        if ($i == 1) {
+                            $saveAnswer->score = 1;
+                        } else {
+                            $saveAnswer->score = 0;
+                        }
+                        $i++;
+                    }
+                    $saveAnswer->save();
+                }
+            }
         }else{
             $saveAnswer = new User_answers;
             $saveAnswer->question_id = $question_id;

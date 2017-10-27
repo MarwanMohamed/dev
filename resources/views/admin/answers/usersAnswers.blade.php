@@ -4,13 +4,11 @@
  <section class="content-header">
     <div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header"><i class="fa fa-tags"></i> Questions</h3>
+			<h3 class="page-header"><i class="fa fa-tags"></i> Answers</h3>
 			<ol class="breadcrumb">
 				<li><i class="fa fa-home"></i><a href="{{ Url('/admin') }}">Home</a></li>
-				<li><i class="fa fa-tags"></i>Questions</li>                          
+				<li><i class="fa fa-tags"></i>Answers</li>                          
 			</ol>
-		<a class="btn btn-primary pull-right" href="{{route('questions.create', $exam->id)}}" style="margin-left: 5px">Create Another Question</a>
-		<a class="btn btn-primary pull-right" href="{{route('users.list', $exam->id)}}">Show Users Answers</a>                       
 		</div>
 	</div>
 
@@ -22,12 +20,21 @@
 			<thead>
 				<tr>
 					<th>Question</th>
+					<th>User Answers</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($exam->questions as $question)
 				<tr>
-					<td><a href="{{route('questions', $question->id)}}">{{$question->question}}</a></td>
+					<td>{{$question->question}}</td>
+				<td>
+				@foreach($question->answersByUser($user->id) as $answer)
+				@if(isset($answer->answer))
+					{{$answer->answer->answer}}
+				@else
+					{{$answer->text}}
+				@endif
+				@endforeach
 				</tr>
 				@endforeach
 			</tbody>

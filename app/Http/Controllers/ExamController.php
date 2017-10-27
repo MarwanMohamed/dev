@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Exam;
+use App\User;
 
 class ExamController extends Controller
 {
@@ -30,5 +31,12 @@ class ExamController extends Controller
     	$this->validate($request, ['name' => 'required']);
 		$exam = Exam::create($request->all());
 		return redirect()->route('questions.create', $exam->id)->with('message', 'Exam added successfully');
+    }
+
+    public function users($id)
+    {
+        $exam = Exam::findOrFail($id);
+        $users = $exam->users;
+        return view('admin.exams.users', compact('exam', 'users'));
     }
 }

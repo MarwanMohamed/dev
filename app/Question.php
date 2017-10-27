@@ -22,4 +22,9 @@ class Question extends Model
 	{
 		return $this->hasMany(User_answers::class)->where('score', 1)->get();
 	}
+
+	public function answersByUser($id)
+	{
+		return $this->hasMany(User_answers::class)->where('user_id', $id)->get();
+	}
 }

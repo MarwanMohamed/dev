@@ -12,4 +12,9 @@ class Exam extends Model
 	{
 		return $this->hasMany(Question::class);
 	}
+
+	public function users()
+	{
+        return $this->belongsToMany(User::class, 'user_exams');
+	}
 }

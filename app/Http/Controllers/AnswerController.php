@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question_answers;
 use App\Question;
+use App\Exam;
+use App\User;
 
 class AnswerController extends Controller
 {
@@ -40,5 +42,20 @@ class AnswerController extends Controller
         
         Question_answers::create($request->all());
 		return redirect()->route('questions', $request->input('question_id'))->with('message', 'Answer added successfully');
+    }
+
+    public function usersAnswers($exam_id, $user_id)
+    {
+        $exam = Exam::findOrFail($exam_id);
+        $user = User::findOrFail($user_id);
+
+        foreach($exam->questions as $question) {
+            foreach($question->answersByUser($user_id) as $answer)
+            {
+                // dd($answer->answer);
+            }
+    
+        }
+        return view('admin.answers.usersAnswers', compact('exam', 'user'));
     }
 }
